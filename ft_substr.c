@@ -20,8 +20,6 @@
 **    Param. #2 The start index of the substring.
 **    Param. #3 The size of the substring.
 **    Return value: The substring.
-
-	NOT READY
 */
 
 #include"libft.h"
@@ -42,27 +40,3 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	substr[i] = 0;
 	return (substr);
 }
-
-/*
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	size_t	i;
-	size_t	j;
-
-	if (!s)
-		return (0);
-	if (len > ft_strlen(s))
-		len = ft_strlen(s) + 1;
-	ptr = (char *)malloc(len + 1);
-	if (!ptr)
-		return (0);
-	
-
-	i = start;
-	j = 0;
-	while (i < ft_strlen(s) && j < len)
-		ptr[j++] = s[i++];
-	ptr[j] = 0;
-	return (ptr);
-}
-*/
