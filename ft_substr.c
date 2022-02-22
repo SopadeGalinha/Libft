@@ -20,6 +20,8 @@
 **    Param. #2 The start index of the substring.
 **    Param. #3 The size of the substring.
 **    Return value: The substring.
+
+	NOT READY
 */
 
 #include"libft.h"
