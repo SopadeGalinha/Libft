@@ -39,14 +39,11 @@ B_SRCS = ft_lstadd ft_lstnew
 
 B_OBJS = $(B_SRCS:.c=.o)
 
+
 all:$(NAME)
 
-$(NAME): $(M_SRCS:=.o)
+$(NAME):	$(M_SRCS:=.o)
 			ar -rcs $(NAME) $(M_SRCS:=.o)
-
-bonus:$(M_SRCS:=.o) $(B_SRCS:=.o)
-			ar -rcs $(NAME) $(M_SRCS:=.o) $(B_SRCS:=.o)
-
 clean:
 	$(RM)	$(M_SRCS:=.o) $(B_SRCS:=.o)
 
@@ -55,4 +52,5 @@ fclean:		clean
 
 re: fclean bonus all
 
-.PHONY:	all bonus clean fclean re
+bonus:	$(M_SRCS:=.o) $(B_SRCS:=.o)
+		ar -rcs $(NAME) $(M_SRCS:=.o) $(B_SRCS:=.o)

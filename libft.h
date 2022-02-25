@@ -96,13 +96,17 @@ typedef struct	s_list
 
 //BONUS
 
+t_list	*ft_lstlast(t_list *lst);
 t_list  *ft_lstnew(void *content);
 t_list	ft_lstadd_front(t_list **head, t_list *new);
 
+int		ft_lstsize(t_list *lst);
+
+void    ft_lstadd_back(t_list **lst, t_list *new);
+void    ft_lstdelone(t_list *lst, void (*del)(void *));
+
 //EXTRAS
-
-t_list	*ft_lstlast(t_list *lst);
-
+/*
 int	    ft_islower(int c);
 int		ft_isblank(int c);
 int     ft_iscntrl(int c);
@@ -114,5 +118,5 @@ int     ft_isxdigit(int c);
 char	*ft_strrev(char *str);
 void	ft_swap_int(int *a, int *b);
 void	ft_swap_char(char *a, char *b);
-
+*/
 #endif

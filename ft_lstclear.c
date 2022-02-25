@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhgoncal <jhgoncal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/16 08:57:54 by jhgoncal          #+#    #+#             */
-/*   Updated: 2022/02/16 08:57:54 by jhgoncal         ###   ########.fr       */
+/*   Created: 2022/02/23 16:47:26 by jhgoncal          #+#    #+#             */
+/*   Updated: 2022/02/23 16:47:26 by jhgoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-** LIBRARY: <ctype.h>
-**
-** DESCRIPTION:
-** convert lowercase to uppercase 
+**  DESCRIPTION:
+**  Deletes and frees the given node and every
+**  successor of that node, using the function ’del’ and free(3).
+**  Finally, the pointer to the list must be set to NULL.
 */
 
 #include "libft.h"
 
-int	ft_toupper(int c)
+void    ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	if (c >= 97 && c <= 122)
-		return (c - 32);
-	return (c);
+    if (!(lst))
+        return ;
+    while(*lst)
+    {
+
+    }
 }
