@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhgoncal <jhgoncal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/20 20:59:31 by jhgoncal          #+#    #+#             */
-/*   Updated: 2022/02/20 20:59:31 by jhgoncal         ###   ########.fr       */
+/*   Created: 2022/03/04 21:18:04 by jhgoncal          #+#    #+#             */
+/*   Updated: 2022/03/04 21:18:04 by jhgoncal         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-**  Description: find last element of list
-**  return the last element of the list
+/* DESCRIPTION:
+**  Iterates the list and applies the function
+**  ’f’ on the content of each node.
 */
+#include "libft.h"
 
-#include"libft.h"
-
-t_list	*ft_lstlast(t_list *lst)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-    if(!lst)
-        return (0);
-    while (lst->next)
-    {
-        lst = lst->next;
-    }
-    return (lst);
+	t_list	*temp;
+
+	temp = lst;
+	while (temp)
+	{
+		f(temp->content);
+		temp = temp->next;
+	}
 }

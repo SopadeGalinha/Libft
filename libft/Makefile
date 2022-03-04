@@ -10,21 +10,26 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	= ${wildcard src/ft_*.c}
-BONUS	= ${wildcard bonus/ft_*.c}
+NAME	= libft.a
+
+SRCS	= ${wildcard ft_*.c}
+BONUS	= ${wildcard ft_lst*.c}
+
 SRCS_O	= ${SRCS:.c=.o}
 BONUS_O	= ${BONUS:.c=.o}
+
 OBJS	= $(SRCS_O) $(BONUS_O)
-INS	= includes
-NAME	= libft.a
-LIB	= ar rc
-RL	= ranlib
+
 CC		= gcc
 RM		= /bin/rm -f
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -I $(INC)
+
+INC	= ./
+LIB	= ar -rcs
+RL	= ranlib
 
 .c.o:
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o} -I ${INS}
+	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 ${NAME}: ${OBJS}
 	${LIB} ${NAME} ${OBJS}
@@ -49,4 +54,4 @@ re: fclean all
 norm :
 	norminette -R CheckForbiddenSourceHeader *.c
 
-.PHONY: all re clean fclean
+.PHONY: clean fclean all re bonus

@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhgoncal <jhgoncal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/20 21:09:26 by jhgoncal          #+#    #+#             */
-/*   Updated: 2022/02/20 21:09:26 by jhgoncal         ###   ########lyon.fr   */
+/*   Created: 2022/01/02 00:36:39 by jhgoncal          #+#    #+#             */
+/*   Updated: 2022/01/02 00:36:39 by jhgoncal         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*  DESCRIPTION:
-**  Adds the node ’new’ at the end of the list.
+/*
+**  Description: 
+**  Adds the 'new' element at the beginning of the list.
+**  Param. #1 The address of a pointer to the first link of a list.
+**  Param. #2 The link to add at the beginning of the list.
 */
-#include "libft.h"
 
-void    ft_lstadd_back(t_list **lst, t_list *new)
+#include"libft.h"
+
+t_list	ft_lstadd_front(t_list **head, t_list *new)
 {
-    t_list  *tmp;
-
-    if (!lst || !new)
-        return ;
-    if (!*lst)
-    {
-        *lst = new;
-        return ;
-    }    
-    tmp = ft_lstlast(*lst);
-    tmp->next = new;    
+	new->next = *head;
+	*head = new;
+	return (*new);
 }

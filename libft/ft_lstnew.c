@@ -23,16 +23,17 @@
   The variable next is initialized to NULL. If the allocation fails, the
   function returns NULL.
 */
+
 #include"libft.h"
 
 t_list	*ft_lstnew(void *content)
 {
-	t_list	*cpy;
+	t_list	*new;
 
-	cpy = malloc(sizeof(t_list));
-	if (!(cpy))
+	new = (t_list *)malloc(sizeof(t_list));
+	if (!(new))
 		return (NULL);
-	cpy->content = content;
-	cpy->next = NULL;
-	return (cpy);
+	new->content = content;
+	new->next = NULL;
+	return (new);
 }

@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                        :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhgoncal <jhgoncal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/02 00:36:39 by jhgoncal          #+#    #+#             */
-/*   Updated: 2022/01/02 00:36:39 by jhgoncal         ###   ########lyon.fr   */
+/*   Created: 2022/02/20 20:59:31 by jhgoncal          #+#    #+#             */
+/*   Updated: 2022/02/20 20:59:31 by jhgoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-**  Description: 
-**  Adds the element new at the beginning of the list.
-**  Param. #1 The address of a pointer to the first link of a list.
-**  Param. #2 The link to add at the beginning of the list.
+**  Description: find last element of list
+**  return the last element of the list
 */
 
 #include"libft.h"
 
-t_list	ft_lstadd_front(t_list **head, t_list *new)
+t_list	*ft_lstlast(t_list *lst)
 {
-	new->next = *head;
-	*head = new;
-	return (*new);
+    if(!lst)
+        return (NULL);
+    while (lst->next)
+        lst = lst->next;
+    return (lst);
 }
