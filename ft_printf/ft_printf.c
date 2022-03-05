@@ -23,16 +23,36 @@ int ft_checkflag(char f)
     return (0);
 }
 
-int ft_putnubr(long int n)
+int ft_putcharr(char c)
+{
+    write(1, &c, 1);
+    return (1);
+}
+
+int ft_putnubr(int n)
 {
     int c;
 
     c = 0;
-    if (n > 2147483647 || n < -2147483648)
+	if (n < 2147483647 || n > -2147483648)
         return (0);
     if (n == -2147483648)
         return (c += write(1, "-2147483648", 11));
+    if (n < 0)
+    {
+        write(1, "-", 1);
+        n *= -1;
+    }
+    if(n < 10)
+        c += ft_putcharr(n + '0');
+    else
+    {
+        ft_putnubr(n / 10);
+        c += ft_putcharr((n % 10) + '0');
+    }
+    return (c);
 }
+
 int ft_conversions(char fmt, va_list args)
 {
     int c;
@@ -71,6 +91,5 @@ int ft_printf(const char *fmt, ...)
 
 int main(void)
 {
-    
-    //ft_printf("abc %d\n", -2147483648);
+    ft_printf("abc %d\n", -217483649);
 }
