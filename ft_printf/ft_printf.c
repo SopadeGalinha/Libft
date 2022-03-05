@@ -14,14 +14,14 @@
 #include <stdio.h>
 #include <stdarg.h>
 
-int ft_checkflag(char f)
+/*int ft_checkflag(char f)
 {
     if (f == 'c' || f == 's' || f == '%'
         || f == 'd' || f == 'i' || f == 'u'
         || f == 'p' || f == 'x' || f == 'X')
         return (1);
     return (0);
-}
+}*/
 
 int ft_putcharr(char c)
 {
@@ -29,27 +29,34 @@ int ft_putcharr(char c)
     return (1);
 }
 
-int ft_putnubr(int n)
+static int	ft_putstring(char const *s)
 {
     int c;
 
     c = 0;
-	if (n < 2147483647 || n > -2147483648)
-        return (0);
-    if (n == -2147483648)
-        return (c += write(1, "-2147483648", 11));
-    if (n < 0)
+	while (*s)
     {
-        write(1, "-", 1);
-        n *= -1;
+		ft_putchar(*s++);
+        c++;
     }
-    if(n < 10)
-        c += ft_putcharr(n + '0');
-    else
+    return (c);
+}
+
+static int ft_putnubr(int n)
+{
+    char    *str;
+    int     c;
+
+    c = 0;
+    if (n >= 2147483647)
     {
-        ft_putnubr(n / 10);
-        c += ft_putcharr((n % 10) + '0');
+        if (n != 2147483647)
+            return (c);
+        return (c += write(1,"2147483647", 10));
     }
+    str = ft_itoa(n);
+    c += ft_putstring(str);
+    free(str);
     return (c);
 }
 
@@ -58,10 +65,12 @@ int ft_conversions(char fmt, va_list args)
     int c;
     
     c = 0;
-    if (fmt == 'c' || fmt == '%')
+    if (fmt == '%')
         c += write(1, &fmt, 1);
+    else if (fmt == 'c')
+        c += ft_putcharr(va_arg(args, int));
     else if (fmt == 'd' || fmt == 'i')
-        c += ft_putnubr(va_arg(args, int));
+        c += (ft_putnubr(va_arg(args, int)));
     return (c);
 }
 
@@ -78,7 +87,7 @@ int ft_printf(const char *fmt, ...)
         if (!fmt)
             return (counter);
         if (fmt[i] == '%')
-            if (ft_checkflag(fmt[++i]))
+            if (ft_strchr("cspdiuxX%", fmt[++i]))
                 counter += ft_conversions(fmt[i], args);
             else
                 continue ;
@@ -91,5 +100,8 @@ int ft_printf(const char *fmt, ...)
 
 int main(void)
 {
-    ft_printf("abc %d\n", -217483649);
+    int i = 2147483649;
+    
+        printf("Original :%%: :%c: :%d:\n", 'a', i);
+        ft_printf("Mine     :%%: :%c: :%d:\n", 'a', i);
 }
