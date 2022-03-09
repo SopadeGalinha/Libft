@@ -21,8 +21,6 @@ int	ft_totallen(unsigned long n, int base)
 	len = 0;
 	if (n == 0)
 		len = 1;
-	if (n < 0)
-		n *= -1;
 	while (n > 0)
 	{
 		n /= base;
@@ -37,7 +35,7 @@ char	*ft_itoa_base(unsigned long n, char *base)
 	unsigned long	lenBase;
 	char			*str;
 
-	if (n == 0);
+	if (n == 0)
 		return (0);
 	lenBase = ft_strlen(base);
 	len = ft_totallen(n, lenBase);
@@ -52,7 +50,6 @@ char	*ft_itoa_base(unsigned long n, char *base)
 	}
 	return (str);
 }
-
 
 static int ft_putcharr(char c)
 {
@@ -109,14 +106,12 @@ int ft_conversions(char fmt, va_list args)
         c += ft_putnubr(va_arg(args, int));
     else if (fmt == 's')
         c += ft_putstring(va_arg(args, char *));
-/*
     else if (fmt == 'u')
-        c += ft_base_hex(va_arg(args, unsigned int) "0123456789");
+        c += ft_base_hex(va_arg(args, unsigned int), "0123456789");
     else if (fmt == 'x')
-        c += ft_base_hex(va_arg(args, unsigned int) "0123456789abcdef");
+        c += ft_base_hex(va_arg(args, unsigned int), "0123456789abcdef");
     else if (fmt == 'u')
-        c += ft_base_hex(va_arg(args, unsigned int) "0123456789ABCDEF");
-*/
+        c += ft_base_hex(va_arg(args, unsigned int), "0123456789ABCDEF");
     else if (fmt == 'p')
         c += write(1, "HELP", 4);
     return (c);
@@ -155,12 +150,13 @@ int main(void)
 
     i = 10; d = 10;
     baseu = 4294967295;
-    basex = 0;
+    basex = 479;
     baseX = 479;
 
            printf("Original :%%: :%c: [%d] [%i] :%s:\n", 'a', d, i, s);
         ft_printf("Mine     :%%: :%c: [%d] [%i] :%s:\n", 'a', d, i, s);
             write(1, "\n\n", 2);
            printf("Original :%u: :%x: [%X]\n", baseu, basex, baseX);
+        ft_printf("Original :%u: :%x: [%X]\n", baseu, basex, baseX);
         
 }
