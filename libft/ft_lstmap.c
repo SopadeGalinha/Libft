@@ -19,31 +19,29 @@
 **  lst: The address of a pointer to a node.
 **  f: The address of the function used to iterate on the list.
 **  del: The address of the function used to delete
-**  the content of a node if needed.
+**  the content of a node (if needed).
 */
 
 #include "libft.h"
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list *new_list;
-	t_list *temp;
+	t_list	*new_lst;
+	t_list	*tmp;
 
-	if (!lst || !f || !del)
-		return (NULL);
-	new_list = ft_lstnew(f(lst->content));
-    temp = new_list;
+	if (!lst)
+		return (0);
+	new_lst = 0;
 	while (lst)
-    {
-        temp->next = ft_lstnew(f(lst->content));
-        temp = temp->next;
-        if(temp == NULL)
-        {
-            ft_lstclear(&new_list, del);
-			return (NULL);
+	{
+		tmp = ft_lstnew(f(lst->content));
+		if (!tmp)
+		{
+			ft_lstclear(&new_lst, del);
+			return (0);
 		}
-        lst = lst->next;
+		ft_lstadd_back(&new_lst, tmp);
+		lst = lst->next;
 	}
-	temp->next = NULL;
-	return (new_list);
+	return (new_lst);
 }
