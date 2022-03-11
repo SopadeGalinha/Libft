@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
+#include "libft/libft.h"
 
 static int ft_conversions(char fmt, va_list args)
 {

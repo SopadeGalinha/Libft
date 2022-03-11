@@ -16,7 +16,7 @@
 ** \______________________________HEADERS_____________________________________/
 */
 
-#include "../libft/libft.h"
+#include "libft/libft.h"
 #include <stdarg.h>
 
 /*
