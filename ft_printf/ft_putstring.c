@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_putstring(char const *s)
 {

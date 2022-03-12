@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 #include "../libft/libft.h"
 
 int ft_base_hex(unsigned long n, char *base)
