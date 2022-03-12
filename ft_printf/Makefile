@@ -13,12 +13,13 @@
 NAME = libftprintf.a
 
 SRCS = $(wildcard ft*.c)
+LIBFT = $(wildcard libft/ft*.c)
 OBJS = $(SRCS:.c=.o)
+LIBFTOBJS = $(LIBFT:.c=.o)
 
 CC = gcc
 RM = /bin/rm -f
 CFLAGS = -Wall -Wextra -Werror -I $(INC)
-
 INC = ./
 RL = ranlib
 LIB = ar -rcs
@@ -26,9 +27,12 @@ LIB = ar -rcs
 .c.o:
 	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
-${NAME}: ${OBJS}
-	${LIB} ${NAME} ${OBJS}
+${NAME}: runlibft ${OBJS} 
+	${LIB} ${NAME} ${OBJS} ${LIBFTOBJS}
 	${RL} ${NAME}
+
+runlibft: 
+	make -C libft
 
 all: ${NAME}
 

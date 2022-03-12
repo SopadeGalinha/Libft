@@ -28,6 +28,7 @@ int		ft_putstring(char const *s);
 int		ft_printf(const char *fmt, ...);
 int 	ft_putcharr(char c);
 int		ft_putpointer(unsigned long n);
+int 	ft_conversions(const char *fmt, int i, va_list args);
 int		ft_base_hex(unsigned long n, char *base);
 char	*ft_itoa_base(unsigned long n, char *base);
 

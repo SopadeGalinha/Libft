@@ -17,7 +17,8 @@ int ft_base_hex(unsigned long n, char *base)
 {
     int     c;
     char    *str;
-    
+    if (!n)
+		return (ft_putstring("0"));
     str = ft_itoa_base(n, base);
     c = ft_putstring(str);
     free (str);

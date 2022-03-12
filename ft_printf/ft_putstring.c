@@ -19,7 +19,7 @@ int	ft_putstring(char const *s)
 
     c = 0;
 	if (!s)
-		return (0);
+		return (ft_putstring("(null)"));
 	while (*s)
     {
 		ft_putchar(*s++);

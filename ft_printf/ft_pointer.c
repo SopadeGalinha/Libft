@@ -18,6 +18,8 @@ int	ft_putpointer(unsigned long n)
 	char	*str;
 	int		c;
 
+	if (!n)
+		return (ft_putstring("(nil)"));
 	c = 0;
 	c += ft_putstring("0x");
 	str = ft_itoa_base(n, "0123456789abcdef");
