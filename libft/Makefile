@@ -17,29 +17,25 @@ BONUS	= ${wildcard ft_lst*.c}
 
 SRCS_O	= ${SRCS:.c=.o}
 BONUS_O	= ${BONUS:.c=.o}
-OBJS	= $(SRCS_O) $(BONUS_O)
+OBJS	= ${SRCS_O} ${BONUS_O}
 
 CC		= gcc
 RM		= /bin/rm -f
-CFLAGS	= -Wall -Wextra -Werror -I $(INC)
+CFLAGS	= -Wall -Wextra -Werror -I ${INC}
 
 INC	= ./
-LIB	= ar -rcs
-RL	= ranlib
-
-.c.o:
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+RLIB	= ar -rcs
 
 ${NAME}: ${OBJS}
-	${LIB} ${NAME} ${OBJS}
-	${RL} ${NAME}
+	${RLIB} ${NAME} ${OBJS}
+	${RLIB} ${NAME}
 
 
 all: ${NAME}
 
-bonus:	$(BONUS_O)
-		$(LIB) $(NAME) $(BONUS_O)
-		$(RL) $(NAME)
+bonus:	${BONUS_O}
+		${RLIB} ${NAME} ${BONUS_O}
+		${RLIB} ${NAME}
 
 clean:
 	${RM} ${OBJS}
@@ -50,7 +46,7 @@ fclean: clean
 
 re: fclean all
 
-norm :
+norm:
 	norminette -R CheckForbiddenSourceHeader *.c
 
 .PHONY: clean fclean all re bonus
