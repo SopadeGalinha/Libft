@@ -14,7 +14,8 @@
 **    Allocates (with malloc(3)) and returns a “fresh” substring
 **    from the string given as argument.
 ** 	 - The substring begins at index "start" and is of size len. 
-**	 - If start and len aren’t refering to a valid substring, the behavior is undefined. 
+**	 - If start and len 
+**   	aren’t refering to a valid substring, the behavior is undefined. 
 **	 - If the allocation fails, the function returns NULL.
 **    Param. #1 The string from which create the substring.
 **    Param. #2 The start index of the substring.
@@ -23,13 +24,14 @@
 */
 
 #include"libft.h"
+
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	size_t	i;
 	char	*sub;
 
 	i = 0;
-	if(!(s))
+	if (!s)
 		return (0);
 	if (len > ft_strlen(s))
 		len = ft_strlen(s);

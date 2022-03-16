@@ -72,7 +72,6 @@ static char	**splitting(char **split, char const *s, char c)
 	i = 0;
 	j = 0;
 	start = -1;
-	// taking the length of each word and splitting the original str
 	while (i <= ft_strlen(s))
 	{
 		if (s[i] != c && start < 0)
@@ -91,7 +90,7 @@ static char	**splitting(char **split, char const *s, char c)
 char	**ft_split(char const *s, char c)
 {
 	char	**split;
- 
+
 	if (!s)
 		return (0);
 	split = malloc((count_words(s, c) + 1) * sizeof(char *));

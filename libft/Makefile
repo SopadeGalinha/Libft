@@ -24,18 +24,19 @@ RM		= /bin/rm -f
 CFLAGS	= -Wall -Wextra -Werror -I ${INC}
 
 INC	= ./
-RLIB	= ar -rcs
+RLIB	= ar -rc
+RS = ar -s
 
 ${NAME}: ${OBJS}
 	${RLIB} ${NAME} ${OBJS}
-	${RLIB} ${NAME}
+	${RS} ${NAME}
 
 
 all: ${NAME}
 
 bonus:	${BONUS_O}
 		${RLIB} ${NAME} ${BONUS_O}
-		${RLIB} ${NAME}
+		${RS} ${NAME}
 
 clean:
 	${RM} ${OBJS}
@@ -47,6 +48,7 @@ fclean: clean
 re: fclean all
 
 norm:
-	norminette -R CheckForbiddenSourceHeader *.c
+	norminette -R CheckForbiddenSourceHeader *.c *.h
+	norminette -R CheckDefine *.h
 
 .PHONY: clean fclean all re bonus
