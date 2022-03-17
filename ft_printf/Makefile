@@ -45,5 +45,6 @@ re: fclean all
 
 norm:
 	norminette -R CheckForbiddenSourceHeader *.c
+	norminette -R CheckDefine *.h
 
 .PHONY: clean fclean all re
