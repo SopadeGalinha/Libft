@@ -17,6 +17,7 @@
 **  beginning or at the end, the function returns a
 **  copy of s. If the allocation fails the function returns NULL.
 **  Param. #1 The string to be trimed.
+**	set: The reference set of characters to trim.
 **  Return value The “fresh” trimmed string or a copy of s.
 */
 
