@@ -12,7 +12,8 @@
 
 NAME	= libft.a
 
-SRCS	= ${wildcard ft_*.c}
+SRCS	= ${wildcard ft_s*.c && ft_t*.c && ft_p*.c}\
+	      ${wildcard ft_m*.c && ft_i*.c && ft_a*.c && ft_b*.c && ft_c*.c}
 BONUS	= ${wildcard ft_lst*.c}
 
 SRCS_O	= ${SRCS:.c=.o}
@@ -24,23 +25,21 @@ RM		= /bin/rm -f
 CFLAGS	= -Wall -Wextra -Werror -I ${INC}
 
 INC	= ./
-RLIB	= ar -rc
-RS = ar -s
+CL = ar -rc
+RL = ar -s
 
-${NAME}: ${OBJS}
-	${RLIB} ${NAME} ${OBJS}
-	${RS} ${NAME}
-
+${NAME}: ${SRCS_O}
+	${CL} ${NAME} ${SRCS_O}
+	${RL} ${NAME}
 
 all: ${NAME}
 
 bonus:	${BONUS_O}
-		${RLIB} ${NAME} ${BONUS_O}
-		${RS} ${NAME}
+		${CL} ${NAME} ${BONUS_O}
+		${RL} ${NAME}
 
 clean:
 	${RM} ${OBJS}
-	${RM} ${BOBJS}
 
 fclean: clean
 	${RM} ${NAME}
@@ -48,7 +47,6 @@ fclean: clean
 re: fclean all
 
 norm:
-	norminette -R CheckForbiddenSourceHeader *.c *.h
-	norminette -R CheckDefine *.h
+	norminette -R CheckForbiddenSourceHeader *.c
 
 .PHONY: clean fclean all re bonus
