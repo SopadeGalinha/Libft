@@ -52,7 +52,7 @@ char	*ft_itoa(int n)
 
 	offset = 0;
 	len = get_size(n);
-	res = (char *)malloc(sizeof(char) * len + 1);
+	res = malloc(sizeof(char) * len + 1);
 	if (!(res))
 		return (NULL);
 	if (n == -2147483648)

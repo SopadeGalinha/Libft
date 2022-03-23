@@ -24,17 +24,17 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	size_t		i;
-	const char	*ini;
+	int	i;
 
-	ini = s;
-	i = ft_strlen(s);
-	s = (s + i);
-	if (!c)
-		return ((char *)s);
-	while (*s != *ini && (char)c != *s)
-		s--;
-	if ((char)c == *s)
-		return ((char *)s);
+	i = -1;
+	while (s[++i])
+		;
+	while (i >= 0)
+	{
+		if (s[i] == (unsigned char)c)
+			return (&((char *)s)[i]);
+		i--;
+	}
 	return (0);
 }
+
