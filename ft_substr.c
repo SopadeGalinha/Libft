@@ -27,26 +27,18 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	i;
-	char	*sub;
+	char	*substr;
 
-	i = -1;
 	if (!s)
 		return (NULL);
 	if (len > ft_strlen(s))
 		len = ft_strlen(s);
-	if (start > len)
+	if (start > ft_strlen(s))
 		return (ft_strdup(""));
-	if (len + start > ft_strlen(s))
-		len = ft_strlen(s) - start;
-	sub = (char *) malloc(sizeof(char) * len + 1);
-	if (!(sub))
-		return (0);
-	if (ft_strlen(s) > start)
-	{
-		while (++i < len && s[start + i])
-			sub[i] = s[start + i];
-	}
-	sub[i] = 0;
-	return (sub);
+	substr = malloc(sizeof(char) * (len + 1));
+	if (!substr)
+		return (NULL);
+	ft_memcpy(substr, &s[start], len);
+	substr[len] = '\0';
+	return (substr);
 }
